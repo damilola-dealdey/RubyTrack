@@ -1,15 +1,29 @@
-def add_time t1, t2
-  regex = /(\d?\d):(\d?\d):(\d?\d)/
-  result = []
-  match_t1 = regex.match t1
-  match_t2 = regex.match t2
-  if match_t1 && match_t2
-    t1_secs = (((Integer(match_t1[1]) * 60) + Integer(match_t1[2])) * 60 ) + Integer(match_t1[3])
-    t2_secs = (((Integer(match_t2[1]) * 60) + Integer(match_t2[2])) * 60 ) + Integer(match_t2[3])
-    total_time = t1_secs + t2_secs
-    index = -1
+class Times
+  @@regex = /(\d?\d):(\d?\d):(\d?\d)/
+  @@converter_constants = [24*60*60,60*60,60,1]
+  attr_accessor :hours, :minutes, :secs 
+  def initialize t
+    match = @@regex.match t
+    if !match
+      @hours = @minutes = @secs = 0
+    end
+    @hours = Integer(match[1]) if Integer(match[1]) <= 23
+    @minutes = Integer(match[2]) if Integer(match[2]) <=59
+    @secs = Integer(match[3]) if Integer(match[3]) <= 59
+  end
 
-    [24*60*60,60*60,60,1].inject(total_time) do |time_left, divisor|
+  def totalsecs
+    (((@hours * 60) + @minutes) * 60 ) + @secs
+  end
+
+  def total_time t2
+    convert_time (totalsecs + t2.totalsecs)
+  end
+
+  def convert_time total_time
+    index,result = -1,[]
+
+    @@converter_constants.inject(total_time) do |time_left, divisor|
       index += 1
       if time_left > 0
         r = time_left.divmod(divisor)
@@ -20,7 +34,7 @@ def add_time t1, t2
         time_left
       end
     end
-    p "#{result[0]} day(s) and #{result[1]}:#{result[2]}:#{result[3]}"
+    result   
   end
-end
 
+end

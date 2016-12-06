@@ -1,28 +1,20 @@
+require_relative 'string'
 class Employee
 
-  attr_accessor :Name, :EmpId, :Designation
+  attr :name, :empId , :designation
 
   def initialize name, id, designation
-    self.Name = name
-    self.EmpId = id
-    self.Designation = designation
+    @name = name
+    @empId = id
+    @designation = designation
   end
 
   def to_s
-    "My name is #{@Name}. My employee Id is #{@EmpId} and i am a #{@Designation} "
+    "My name is #{@name}. My employee Id is #{@empId} and i am a #{@designation} "
   end
 
   def formatted_to_s
-    "\t#{@Name} (EmpId: #{@EmpId})"
-  end
-
-end
-
-class String
-  
-  def pluralize
-    return (self << "s").capitalize if /[^aeiou]/ =~ self[self.length - 1]
-    self
+    "\t#{@name} (EmpId: #{@empId})"
   end
 
 end

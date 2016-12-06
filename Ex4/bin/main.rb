@@ -1,3 +1,5 @@
 require_relative '../lib/string'
 
-check_palindromes
+print "Please provide input string : "
+str = gets
+str.check_palindromes

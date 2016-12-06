@@ -1,3 +1,4 @@
 require_relative '../lib/string'
 
-p do_main_one
+print 'Excercise 1 (Please provide input string) : '
+p gets.hash_count

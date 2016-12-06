@@ -1,16 +1,16 @@
 class Customer
-  @@Counter = 0
+  @@counter = 0
   attr_accessor :name, :account_no, :balance 
   def initialize(name)
-    @@Counter += 1
+    @@counter += 1
     p name
     @name = name
-    @account_no = @@Counter
+    @account_no = @@counter
     @balance = Float(1000)
   end
 
   def to_s
-    "#{self.name} with Account No. #{self.account_no} has #{self.balance} left."
+    "#{name} with Account No. #{account_no} has #{balance} left."
   end
 
   def deposit(amount)
@@ -19,13 +19,20 @@ class Customer
   end
 
   def withdraw(amount)
-    @balance -= Float(amount)
+    if @balance > amount 
+      @balance -= Float(amount)
+    else 
+      puts "Insufficeint balance"
+      false
+    end
+    
     puts self
   end
 
   def transfer(other_customer, amount)
-    self.withdraw(amount)
-    other_customer.deposit(amount)
+    if self.withdraw(amount)
+      other_customer.deposit(amount)
+    end
   end
 
 end

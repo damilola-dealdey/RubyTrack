@@ -1,7 +1,14 @@
-def factorial n
-  begin
-    (1..n).inject(:*)
-  rescue Exception
-    p Exception
+require_relative('../lib/negative-exception')
+
+class Factorial
+  def calculate n    
+    begin
+      raise NegativeNumberException, "Negative number" if n < 0
+      p (1..n).inject(:*)
+    rescue NegativeNumberException
+      p "Cannot calculate factorial for negative numbers"
+    rescue Exception
+      p Exception
+    end
   end
 end

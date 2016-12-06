@@ -1,3 +1,3 @@
 require_relative('../lib/factorial')
 
-p factorial 4
+p Factorial.new.do_factorial 4

@@ -1,5 +1,3 @@
-def reverse_words str
-  str.split().reverse.join(' ')
-end
+require_relative('../lib/string')
 
-p reverse_words "An apple a day keeps the doctor away"
+p "An    apple a day keeps the doctor away".reverse_words 
