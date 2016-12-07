@@ -2,7 +2,7 @@ require ('csv')
 #require_relative ('../lib/employee')
 
 print "Please provide file name? : "
-filename = File.dirname(__FILE__) << '/main.csv'
+filename = File.dirname(__FILE__) << '/persons.csv'
 
 data = CSV.open(filename, headers: true)
 
@@ -12,14 +12,17 @@ p data.headers
 guests = CSV.read(filename,headers:true) 
 p guests
 person = Class.new do |hash|
-  attr_accessor *hash.keys
+  #attr_accessor *hash.keys
 
   def initialize(hash)
     hash.each do |key, value|
-    instance_variable_set("@#{key}", value)
+      instance_variable_set("@#{key}", value)
+    end
   end
 
 end
+
+p person.Name
 
 
 

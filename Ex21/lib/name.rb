@@ -1,5 +1,6 @@
-require_relative ('string')
-require_relative ('empty-string')
+require_relative 'string')
+require_relative 'empty_string_exception'
+require_relative 'not_capitalized_exception'
 class Name
 
   def initialize fname, lname

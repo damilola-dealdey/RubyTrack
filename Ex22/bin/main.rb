@@ -1,7 +1,7 @@
 require 'csv'
-require_relative '../lib/csv-file-processor'
+require_relative '../lib/csv_file_processor'
 
-all_employees = CSVFileProcessor.new().process
+all_employees = CSVFileProcessor.new.process
 
 sorted_hash = all_employees.sort_by{ |emp| emp.name } .group_by { |emp| emp.designation }
 

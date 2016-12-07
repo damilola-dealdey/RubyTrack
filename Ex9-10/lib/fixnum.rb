@@ -1,5 +1,5 @@
 class Fixnum
   def parity
-    self.odd? ? :odd : :even
+    odd? ? :odd : :even
   end
 end
