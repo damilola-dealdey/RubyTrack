@@ -1,3 +1,3 @@
-require_relative('../lib/factorial')
+require_relative'../lib/factorial'
 
-Factorial.new().calculate -4
+Factorial.new.calculate -4

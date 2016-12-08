@@ -14,13 +14,19 @@ class Customer
   end
 
   def deposit(amount)
-    @balance += Float(amount)
-    puts self
+    if amount > 0      
+      @balance += Float(amount)
+      puts self
+    else
+      puts "Amount must be greater than 0"
+    end
   end
 
   def withdraw(amount)
-    if @balance > amount 
+    if @balance > amount && amount > 0
       @balance -= Float(amount)
+    elsif amount <= 0
+      puts "Amount must be greater than 0"
     else 
       puts "Insufficeint balance"
       false
