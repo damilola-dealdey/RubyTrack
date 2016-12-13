@@ -1,4 +1,4 @@
-require_relative'../lib/negative-exception'
+require_relative'../lib/negative_number_exception'
 
 class Factorial
   def calculate n    
