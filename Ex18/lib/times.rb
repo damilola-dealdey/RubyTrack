@@ -3,10 +3,10 @@ class Times
   CONVERTER_CONSTANTS = [24*60*60,60*60,60,1]
   attr_accessor :hours, :minutes, :secs 
   def initialize t
+    @hours = @minutes = @secs = 0     
     match = REGEX.match t
     if !match
       puts "Regex failed for (#{t})."
-      @hours = @minutes = @secs = 0
       return
     end
     @hours = Integer(match[1]) if Integer(match[1]) <= 23
