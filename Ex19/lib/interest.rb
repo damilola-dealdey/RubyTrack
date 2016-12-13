@@ -7,21 +7,27 @@ class Interest
   end
 
   def calculate_interest
-    n = 12
-    si = @principal * (1 + @@rate * @time)
-    si_i_only = @principal * @@rate * @time
-    ci = @principal * ((1 + @@rate / n ) ** (n * @time))
-    ci_i_only = ci - @principal
-    display_result(si, si_i_only , ci, ci_i_only)
+    calculate_simple_interest
+    calculate_compound_interest
+    display_result
   end
 
-  def display_result(si,si_i_only,ci,ci_i_only)
+  def calculate_simple_interest    
+    @simple_interest = @principal * (1 + @@rate * @time)
+    @simple_interest_only = @principal * @@rate * @time
+  end
+
+  def calculate_compound_interest
+    n = 12 
+    @compound_interest = @principal * ((1 + @@rate / n ) ** (n * @time))
+    @compound_interest_only = @compound_interest - @principal
+  end
+
+  def display_result
     puts "Principal : #{@principal} Money\nTime : #{@time} year(s)\nRate : #{@@rate}\%"
-    puts "Calculating simple interest ..."
-    puts "Simple Interest\nTotal Amount : #{si} money\nInterest : #{si_i_only} money"
-    puts "Calculating compound interest ..."
-    puts "Compound Interest\nTotal Amount : #{ci} money\nInterest : #{ci_i_only} money"
-    puts "Difference : Compound Interest (#{ci} money) - Simple Interest (#{si} money) = #{ci - si} money"
+    puts "Simple Interest\nTotal Amount : #{@simple_interest} money\nInterest : #{@simple_interest_only} money"
+    puts "Compound Interest\nTotal Amount : #{@compound_interest} money\nInterest : #{@compound_interest_only} money"
+    puts "Difference : Compound Interest (#{@compound_interest} money) - Simple Interest (#{@simple_interest} money) = #{@compound_interest - @simple_interest} money"
   end
 
 end

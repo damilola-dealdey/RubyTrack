@@ -1,9 +1,9 @@
 class Times
-  @@regex = /^(\d{1,2}):(\d\d):(\d\d)$/
-  @@converter_constants = [24*60*60,60*60,60,1]
+  REGEX = /^(\d{1,2}):(\d\d):(\d\d)$/
+  CONVERTER_CONSTANTS = [24*60*60,60*60,60,1]
   attr_accessor :hours, :minutes, :secs 
   def initialize t
-    match = @@regex.match t
+    match = REGEX.match t
     if !match
       puts "Regex failed for (#{t})."
       @hours = @minutes = @secs = 0
@@ -25,7 +25,7 @@ class Times
   def convert_time total_time
     index,result = -1,[]
 
-    @@converter_constants.inject(total_time) do |time_left, divisor|
+    CONVERTER_CONSTANTS.inject(total_time) do |time_left, divisor|
       index += 1
       if time_left > 0
         r = time_left.divmod(divisor)

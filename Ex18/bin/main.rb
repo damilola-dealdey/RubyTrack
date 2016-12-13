@@ -1,6 +1,6 @@
 require_relative('../lib/times')
 
-t1 = Times.new("11:23:07")
+t1 = Times.new("11:000000000:07")
 t2,t3,t4 = "22:53:45","0:23:23","23:45:56"
 
 result = t1.total_time_multi t2,t3,t4
