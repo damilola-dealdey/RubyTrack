@@ -1,12 +1,12 @@
 class Times
-  REGEX = /^(\d{1,2}):(\d\d):(\d\d)$/
+  REGEX = /^([0-2][0-3]):([0-5][0-9]):([0-5][0-9])$/
   CONVERTER_CONSTANTS = [24*60*60,60*60,60,1]
   attr_accessor :hours, :minutes, :secs 
   def initialize t
     @hours = @minutes = @secs = 0     
     match = REGEX.match t
     if !match
-      puts "Regex failed for (#{t})."
+      puts "Regex failed for (#{t}).. All values set to zero (0)"
       return
     end
     @hours = Integer(match[1]) if Integer(match[1]) <= 23
