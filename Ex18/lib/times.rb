@@ -6,7 +6,8 @@ class Times
     @hours = @minutes = @secs = 0     
     match = REGEX.match t
     if !match
-      puts "Regex failed for (#{t}). All values set to zero (0)"
+      #puts "Regex failed for (#{t}). All values set to zero (0)"
+      raise "Invalid Time Format"
       return
     end
     @hours = Integer(match[1]) if Integer(match[1]) <= 23
