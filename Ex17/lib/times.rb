@@ -1,6 +1,6 @@
 class Times
   REGEX = /^([0-2][0-3]):([0-5][0-9]):([0-5][0-9])$/
-  CONVERTER_CONSTANTS = [24*60*60,60*60,60,1]
+  CONVERTER = [24*60*60,60*60,60,1]
   attr_accessor :hours, :minutes, :secs 
   def initialize t
     @hours = @minutes = @secs = 0     
@@ -26,7 +26,7 @@ class Times
   def convert_time total_time
     index,result = -1,[]
 
-    CONVERTER_CONSTANTS.inject(total_time) do |time_left, divisor|
+    CONVERTER.inject(total_time) do |time_left, divisor|
       index += 1
       if time_left > 0
         r = time_left.divmod(divisor)
